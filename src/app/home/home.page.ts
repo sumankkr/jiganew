@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { ApiService } from "../services/api.service";
 import { GlobalVarService } from "../services/global-var.service";
+import { Events } from '../../app/services/events.service';
 
 // import { SplashPage } from '../splash/splash';
 // import { SubscriptionpurchasePage } from '../subscriptionpurchase/subscriptionpurchase';
@@ -84,6 +85,7 @@ export class HomePage {
     private store: InAppPurchase2,
     private storage: Storage, private apiservice: ApiService,
     private _authSrc: AuthService,
+    public events:Events,
     private _gblSrc: GlobalVarService, private zone: NgZone) {
       this.count = 1;
     this.pointreward = false;
@@ -576,7 +578,7 @@ export class HomePage {
   upgrade() {
     this.rightSwipeBlock = false;
     // this.navCtrl.push(SubscriptionpurchasePage);
-    this.router.navigate(['SubscriptionpurchasePage']);
+    this.router.navigate(['subscriptionpurchase']);
   }
 
   CloseRightSwipPopup() {
@@ -659,7 +661,7 @@ export class HomePage {
 
   }
   messageRecived() {
-    // this.events.publish('is_read');
+     this.events.publish('is_read');
   }
 
   async Logout() {
@@ -673,10 +675,14 @@ export class HomePage {
         userID: JSON.stringify(this.userID)
       }
     };
+    if(!this.userID) {
+      this.router.navigate(['splash']);
+    }
     if (link === 'mappoint') {
       this.router.navigate(["mappoint"], navigationExtras);
     } else if (link === 'match') {
-      this.router.navigate(["match"], navigationExtras);
+      //this.router.navigate(["match"], navigationExtras);
+      this.router.navigate(["home"]);
     } else if (link === 'chat') {
       this.router.navigate(["chat"], navigationExtras);
     } else if (link === 'subscription') {
@@ -694,7 +700,7 @@ export class HomePage {
     } else if (link == 'insight') {
       this.router.navigate(["insight"], navigationExtras);
     } else if (link == 'subscriptionpurchase') {
-      this.router.navigate(['subscriptionpurchase'], navigationExtras);
+      this.router.navigate(['features'], navigationExtras);
     } else if (link == 'setting') {
       this.router.navigate(['setting'], navigationExtras);
     } else if (link == 'editprofile') {
