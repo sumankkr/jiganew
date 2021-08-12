@@ -58,7 +58,7 @@ export class SubscriptionPage implements OnInit {
            if(data) 
            {
              this.content = data.All_Features;
-             console.log(this.content[0]); 
+             console.log(this.content); 
            }
          });
        });

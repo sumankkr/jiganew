@@ -12,7 +12,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { ApiService } from "../services/api.service";
 import { GlobalVarService } from "../services/global-var.service";
 import { Events } from '../../app/services/events.service';
-
+import { MenuController } from '@ionic/angular';
 // import { SplashPage } from '../splash/splash';
 // import { SubscriptionpurchasePage } from '../subscriptionpurchase/subscriptionpurchase';
 //import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';//import { RequestsProvider } from '../../providers/requests/requests';
@@ -81,7 +81,7 @@ export class HomePage {
   udata: any = '';
 
   constructor(private auth: AuthService, private route: ActivatedRoute, private router: Router,
-    public http: HttpClient,
+    public http: HttpClient,private menu: MenuController,
     private store: InAppPurchase2,
     private storage: Storage, private apiservice: ApiService,
     private _authSrc: AuthService,
@@ -681,8 +681,9 @@ export class HomePage {
     if (link === 'mappoint') {
       this.router.navigate(["mappoint"], navigationExtras);
     } else if (link === 'match') {
-      //this.router.navigate(["match"], navigationExtras);
-      this.router.navigate(["home"]);
+     // this.router.navigate(["match"], navigationExtras);
+     // this.router.navigate(["sidemenu"]);
+     this.menu.close();
     } else if (link === 'chat') {
       this.router.navigate(["chat"], navigationExtras);
     } else if (link === 'subscription') {

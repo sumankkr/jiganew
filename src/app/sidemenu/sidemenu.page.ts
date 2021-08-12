@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidemenu.page.scss'],
 })
 export class SidemenuPage implements OnInit {
-
+rootPage:any;
   constructor() { }
 
   ngOnInit() {
@@ -14,7 +14,7 @@ export class SidemenuPage implements OnInit {
 
 
   itemClick(component){
-      // this.rootPage = component;
+       this.rootPage = component;
   }
 
 

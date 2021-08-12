@@ -242,6 +242,9 @@ ion-card-content {
 ion-card-content.subCardCont {
   --ion-background-color: #000;
 }
+ion-card-content.subCardCont1 {
+  --ion-background-color: #09661c;
+}
 .subText {
   font-size: 10px;
 }
@@ -435,6 +438,10 @@ ion-card-content.subCardCont {
 }
 .mr-0 {
   margin-right: 0px;
+}
+.fx {
+  display: flex;
+  white-space:nowrap
 }
 .transparentBg {
   background: transparent !important;

@@ -100,8 +100,10 @@ export class ChattingPage implements OnInit {
         console.log(data);
       });
       this.chatservice.addnewmessage(this.newmessage, this.myUID, this.friend.uid).then(() => {
+        
         this.newmessage = '';
         this.content.scrollToBottom();
+
 
       })
       let Data = new FormData();

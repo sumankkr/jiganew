@@ -194,10 +194,15 @@ export class ChatPage implements OnInit {
       postData.append('friend_id',like);
       API_URL='http://jigaju.esy.es/api/friend_like_APP';
       responseData = this.http.post(API_URL,postData);    
-      responseData.subscribe(data => {            
+      responseData.subscribe(async data => {            
             this.contentwholike.splice(position,1);
             console.log(data.friendDetail.ejuser);
             this.apiservice.acceptrequest(this._gblSrc.currectUserAllDetails.ejuser,data.friendDetail.ejuser);
+            var to = await this.toast.create({
+               message:"Liked Successfully",
+               duration: 3000
+             })
+            await to.present();
           },onerror=>{
                 console.log('Network Or Server Error While Adding Friend');
               });
@@ -215,9 +220,14 @@ export class ChatPage implements OnInit {
       postData.append('friend_id',dislike);
     API_URL='http://jigaju.esy.es/api/friend_dislike_APP';
       responseData = this.http.post(API_URL,postData);    
-      responseData.subscribe(data => {
+      responseData.subscribe(async data => {
             this.contentwholike.splice(position,1);
             console.log(data); 
+            var to = await this.toast.create({
+              message:"Disliked",
+              duration: 3000
+            })
+           await to.present();
           },onerror=>{
                 console.log('Network Or Server Error While Adding Friend');
               });
@@ -246,11 +256,16 @@ export class ChatPage implements OnInit {
       postData.append('rating',point);
     API_URL='http://jigaju.esy.es/api/friend_likewishlist_APP';
       responseData = this.http.post(API_URL,postData);    
-      responseData.subscribe(data => {
+      responseData.subscribe(async data => {
             console.log(data); 
             if(data) {
                   this.contentwishlist.splice(position,1);
                   document.getElementById('dislikes' + like).style.display="none";
+                  var to = await this.toast.create({
+                     message:"Liked",
+                     duration: 3000
+                   })
+                  await to.present();
             }
           },onerror=>{
                 console.log('Network Or Server Error While Adding Friend');
@@ -267,12 +282,16 @@ wishdislikefriend(dislike,point,position:number) {
     postData.append('rating',point);
   API_URL='http://jigaju.esy.es/api/friend_dislike_APP';      
   responseData = this.http.post(API_URL,postData);    
-  responseData.subscribe(data => {
+  responseData.subscribe(async data => {
       console.log(data);
       if(data) {
         this.contentwishlist.splice(position,1);
         document.getElementById('dislikes' + dislike).style.display="none";
-       
+        var to = await this.toast.create({
+           message:"Disliked wihlisted",
+           duration: 3000
+         })
+        await to.present();
       } 
     },onerror=>{
           console.log('Network Or Server Error While Adding Friend');
@@ -317,9 +336,15 @@ async  blockuser(friend,position:number){
         postData.append('comment',data.comment);
         API_URL='http://jigaju.esy.es/api/blockuser_APP';      
         responseData = this.http.post(API_URL,postData);    
-        responseData.subscribe(data => {
+        responseData.subscribe(async data => {
             console.log(data);
             this.content.splice(position,1);
+            
+            var to = await this.toast.create({
+               message:"Blocked Successfully",
+               duration: 3000
+             })
+            await to.present();
             document.getElementById(friend).style.display="none";
           },async onerror=>{
                 console.log('Network Or Server Error While Adding Friend');
