@@ -80,6 +80,34 @@ export class HomePage {
   mainMatchProfiles = [];
   udata: any = '';
 
+  cards = [
+        {
+          img: "https://placeimg.com/300/300/people",
+          title: "Demo card 1",
+          description: "This is a demo for Tinder like swipe cards"
+        },
+        {
+          img: "https://placeimg.com/300/300/animals",
+          title: "Demo card 2",
+          description: "This is a demo for Tinder like swipe cards"
+        },
+        {
+          img: "https://placeimg.com/300/300/nature",
+          title: "Demo card 3",
+          description: "This is a demo for Tinder like swipe cards"
+        },
+        {
+          img: "https://placeimg.com/300/300/tech",
+          title: "Demo card 4",
+          description: "This is a demo for Tinder like swipe cards"
+        },
+        {
+          img: "https://placeimg.com/300/300/arch",
+          title: "Demo card 5",
+          description: "This is a demo for Tinder like swipe cards"
+        }
+      ]
+
   constructor(private auth: AuthService, private route: ActivatedRoute, private router: Router,
     public http: HttpClient,private menu: MenuController,
     private store: InAppPurchase2,

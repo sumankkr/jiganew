@@ -74,7 +74,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-content fullscreen class="ion-padding"> 
-        <div *ngIf="rightSwipeBlock">
+        <!--div *ngIf="rightSwipeBlock">
             <ion-item  class="rightSwipBlock">
                 <ion-icon name="close-circle" style="position:fixed; top:5px; left:90%;font-size: 35px;color: #fe2829;" (click)="CloseRightSwipPopup()"></ion-icon>
                 <p style="text-align: center"> Slow down Dude ! </p><p style="text-align: center">You have exhusted your right swipe. <br> If you want to swip more, please upgrade </p>
@@ -90,9 +90,14 @@
         <div *ngIf="content.length==0 && !showLoading" style="height: 47vh;width:100%;text-align: center;">
             <p style="text-align: center;margin-top:50%;position:relative"> No more match <br>Keep checking again… </p>
             <img src={{profileImage}} style="border-radius: 50%;width:150px;height:150px; border: 2px solid gray;">
+         </div-->
+
+         <div>
+            <app-jigazoocard [cards]="cards" (choiceMade)="logChoice($event)"></app-jigazoocard>
          </div>
 
-        <div *ngIf="pointreward" class="reward-point-award fivePhasesFadeIn">
+
+        <!-- *ngIf="content.length>0 && !showLoading"div *ngIf="pointreward" class="reward-point-award fivePhasesFadeIn">
                 {{rewardpointAwarded}}
         </div>
         <div *ngIf="showAutoSwipe" >
@@ -169,10 +174,10 @@
               </div>
             </ion-col>
             </ion-row>
-        </div>
+        </div-->
         
     </ion-content>
-    <ion-footer class="ion-no-border ion-no-padding" style="margin-top: -1px;">
+    <!--ion-footer class="ion-no-border ion-no-padding" style="margin-top: -1px;">
       <ion-toolbar>
         <ion-grid>
           <ion-row>
@@ -190,7 +195,6 @@
               <img style="width: 40px;" src="assets/imgs/like.svg" />
             </ion-col>
             <ion-col size="2" class="centerVH" (click)='userBoost(10)'>
-              <!-- <img style="width: 34px;" src="assets/imgs/Bost.svg" /> -->
               <div class="boost">
                 <img style="width: 100%;" src="assets/imgs/Bost.svg">
                 <p>{{showBoosterTime}}</p>
@@ -200,7 +204,7 @@
           </ion-row>
         </ion-grid>
       </ion-toolbar>
-    </ion-footer>
+    </ion-footer-->
   </div>
 </ion-app>
 <!--ion-menu-controller></ion-menu-controller-->
